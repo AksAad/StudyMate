@@ -31,7 +31,7 @@ ZenQuotes API – For motivational quotes
 
 BoredAPI – For activity suggestions
 
-TheMealDB – For food/snack ideas
+
 
 🎯 Goal
 To help students balance productivity and mental well-being by promoting healthy breaks, motivation, and mindful habits — all through a clean, distraction-free interface.
