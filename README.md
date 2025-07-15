@@ -56,3 +56,5 @@ Then visit http://localhost:3000
 🧠 Pomodoro timer integration
 
 📱 Mobile-first redesign for better UX
+
+☁️ Hosting on Render : in the future once project is completed
