@@ -28,6 +28,7 @@
             startTime = Date.now() - elapsedTime;
             timerInterval = setInterval(updateStopwatch, 1000);
             running = true;
+            startBtn.classList.add("active-start");
         }
     }
 
@@ -36,6 +37,7 @@
             clearInterval(timerInterval);
             elapsedTime = Date.now() - startTime;
             running = false;
+            startBtn.classList.remove("active-start");
         }
     }
 
@@ -44,11 +46,20 @@
         elapsedTime = 0;
         running = false;
         display.textContent = formatTime(elapsedTime);
+        updateFlowStateMessage();
+        startBtn.classList.remove("active-start");
+        resetBtn.classList.add("active-reset");
+        setTimeout(() => {
+            resetBtn.classList.remove("active-reset");
+        }, 350);
     }
+
 
     function updateStopwatch() {
         elapsedTime = Date.now() - startTime;
         display.textContent = formatTime(elapsedTime);
+
+        updateFlowStateMessage();
 
         if (elapsedTime >= reminderTime) {
             alert("25-minute reminder!");
@@ -57,9 +68,23 @@
         }
     }
 
+
     startBtn.addEventListener('click', startStopwatch);
     pauseBtn.addEventListener('click', pauseStopwatch);
     resetBtn.addEventListener('click', resetStopwatch);
+    function updateFlowStateMessage() {
+        const flowStateDiv = document.getElementById('flow-state-msg');
+        const minutesPassed = Math.floor(elapsedTime / (60 * 1000));
+
+        if (minutesPassed >= 25) {
+            flowStateDiv.textContent = "You have entered flow state.";
+        } else {
+            const remaining = 25 - minutesPassed;
+            flowStateDiv.textContent = `Study for ${remaining} more minute${remaining !== 1 ? 's' : ''} to reach flow state.`;
+        }
+    }
+    updateFlowStateMessage();
+
 </script>
 
 </body>
