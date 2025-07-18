@@ -1,11 +1,22 @@
 <%- include("./partials/header.ejs") %>
     <div class="container">
-        <div class="timer">
+        <div class="stopwatch">
+            <div class = "stpwtc">
+                <h2 class="stopwatch-heading">Time since you started studying</h2>
+                <div class="stopwatch-inner">
+                    <div id="stopwatch-display">00:00:00</div>
+                    <div class="button-group">
+                        <button id="start-btn">Start</button>
+                        <button id="pause-btn">Pause</button>
+                        <button id="reset-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flow-state" id="flow-state-msg">
             
         </div>
-        <div class="flow-state">
 
-        </div>
         <div class="get-quote">
 
         </div>

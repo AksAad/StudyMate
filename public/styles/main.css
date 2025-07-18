@@ -2,6 +2,10 @@
     display: block;
     width: 100%;
 }
+body {
+  overflow: hidden;
+}
+
 .please-center{
     display: flex;
     justify-content: center;
@@ -34,18 +38,23 @@
   display: grid;
   grid-template-columns: 1fr 2fr; 
   grid-template-rows: repeat(3, 1fr); 
-  gap: 2rem;
-  height: 100vh;
-  padding: 20px;
+  gap: 1rem;
+  height: calc(100vh - 120px);
+  padding: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 10%;
+  margin-top: 3%;
   box-sizing: border-box;
 }
 
 
-.timer {
+.stopwatch {
   grid-column: 1;
   grid-row: 1;
   background-color: #ccc;
   border-radius: 20px;
+  
 }
 
 .flow-state {
@@ -58,14 +67,143 @@
 .get-quote {
   grid-column: 1;
   grid-row: 3;
-  background-color: #aaa;
+  background-color: rgb(56, 77, 67);
   border-radius: 20px;
+  border-style: solid;
+  border-color: black;
 }
 
 
 .to-do-list {
   grid-column: 2;
   grid-row: 1 / span 3;
-  background-color: #999;
+  background-color: rgb(56, 77, 67);
   border-radius: 20px;
+  border-style: solid;
+  border-color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.stpwtc {
+  background-color:   rgb(56, 77, 67);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.stopwatch-heading {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.2rem;
+}
+
+.stopwatch-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#stopwatch-display {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  font-family: "Orbitron", sans-serif;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  min-width: 100px;
+  border-radius: 24px;
+  border-style: solid;
+  border-color: black;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+button:hover {
+  background-color: #d5d5d5;
+  transform: scale(1.02);
+}
+
+
+button.active-start {
+  background-color: #4caf50;
+  color: white;
+  animation: pulse 1s infinite;
+  border-color: #388e3c;
+}
+button.active-reset {
+  background-color: #f44336; /* red */
+  color: white;
+  border-color: #c62828;
+  transition: background-color 0.3s ease;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+
+.stopwatch {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: rgb(56, 77, 67);
+  border-radius: 20px;
+  padding: 20px;
+  border-style: solid;
+  border-color: black;
+}
+.flow-state {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: rgb(56, 77, 67);
+  border-radius: 24px;
+  border-style: solid;
+  border-color: black;
+  padding: 30px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.3rem;
+  color: white;
+  letter-spacing: 0.2rem;
+}
+.stopwatch,
+.flow-state,
+.get-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
