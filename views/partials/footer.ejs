@@ -1,5 +1,66 @@
 </main>
+<script>
+    let timerInterval;
+    let startTime = 0;
+    let elapsedTime = 0;
+    let running = false;
+    const reminderTime = 25 * 60 * 1000;
 
+    const display = document.getElementById('stopwatch-display');
+    const startBtn = document.getElementById('start-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const resetBtn = document.getElementById('reset-btn');
+
+    function formatTime(ms) {
+        let hours = Math.floor(ms / (1000 * 60 * 60));
+        let minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((ms % (1000 * 60)) / 1000);
+
+        return (
+            String(hours).padStart(2, '0') + ':' +
+            String(minutes).padStart(2, '0') + ':' +
+            String(seconds).padStart(2, '0')
+        );
+    }
+
+    function startStopwatch() {
+        if (!running) {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(updateStopwatch, 1000);
+            running = true;
+        }
+    }
+
+    function pauseStopwatch() {
+        if (running) {
+            clearInterval(timerInterval);
+            elapsedTime = Date.now() - startTime;
+            running = false;
+        }
+    }
+
+    function resetStopwatch() {
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        running = false;
+        display.textContent = formatTime(elapsedTime);
+    }
+
+    function updateStopwatch() {
+        elapsedTime = Date.now() - startTime;
+        display.textContent = formatTime(elapsedTime);
+
+        if (elapsedTime >= reminderTime) {
+            alert("25-minute reminder!");
+            clearInterval(timerInterval);
+            running = false;
+        }
+    }
+
+    startBtn.addEventListener('click', startStopwatch);
+    pauseBtn.addEventListener('click', pauseStopwatch);
+    resetBtn.addEventListener('click', resetStopwatch);
+</script>
 
 </body>
 

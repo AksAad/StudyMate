@@ -38,10 +38,25 @@
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  padding: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3%;
+  grid-column-gap: 2rem;
+}
+#stopwatch-display {
+    font-size: 3em;
+    margin-bottom: 20px;
 }
 
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 5px;
+    cursor: pointer;
+}
 
-.timer {
+.stopwatch {
   grid-column: 1;
   grid-row: 1;
   background-color: #ccc;
