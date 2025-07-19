@@ -2,9 +2,7 @@
     display: block;
     width: 100%;
 }
-body {
-  overflow: hidden;
-}
+
 
 .please-center{
     display: flex;
@@ -71,8 +69,21 @@ body {
   border-radius: 20px;
   border-style: solid;
   border-color: black;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-
+.get-quote > *{
+  font-family: "Orbitron", sans-serif ;
+  font-size: 1rem;
+  color: white;
+  letter-spacing: 0.1rem ;
+  margin: 0.4rem 0;
+}
 
 .to-do-list {
   grid-column: 2;
