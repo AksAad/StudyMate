@@ -84,6 +84,38 @@
         }
     }
     updateFlowStateMessage();
+    document.getElementById("todo-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const input = document.getElementById("todo-input");
+            if (input.value.trim() !== "") {
+            const li = document.createElement("li");
+            li.innerHTML = `<label><input type="checkbox" class="todo-checkbox" /> ${input.value}</label>`;
+            document.getElementById("todo-items").appendChild(li);
+            input.value = "";
+
+            
+            li.querySelector("input").addEventListener("change", checkCompletion);
+        }
+    });
+
+
+    function checkCompletion() {
+        const checkboxes = document.querySelectorAll(".todo-checkbox");
+        const allChecked = [...checkboxes].length > 0 && [...checkboxes].every(cb => cb.checked);
+
+        if (allChecked && isRunning) {
+            document.body.classList.add("congrats-mode");
+        } else {
+            document.body.classList.remove("congrats-mode");
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".todo-checkbox").forEach(cb => {
+            cb.addEventListener("change", checkCompletion);
+        });
+    });
+    
 
 </script>
 
