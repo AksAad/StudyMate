@@ -99,21 +99,39 @@
     });
 
 
-    function checkCompletion() {
-        const checkboxes = document.querySelectorAll(".todo-checkbox");
-        const allChecked = [...checkboxes].length > 0 && [...checkboxes].every(cb => cb.checked);
-
-        if (allChecked && isRunning) {
-            document.body.classList.add("congrats-mode");
-        } else {
-            document.body.classList.remove("congrats-mode");
-        }
-    }
+    
 
     window.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".todo-checkbox").forEach(cb => {
             cb.addEventListener("change", checkCompletion);
         });
+    });
+    const container = document.getElementById("bubble-background");
+    const cols = Math.floor(window.innerWidth / 60);
+    const rows = Math.floor(window.innerHeight / 60);
+    const bubbles = [];
+    
+    for (let i = 0; i < cols * rows; i++) {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      container.appendChild(bubble);
+      bubbles.push(bubble);
+    }
+    
+    document.addEventListener("mousemove", (e) => {
+      bubbles.forEach((bubble) => {
+        const rect = bubble.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const dist = Math.sqrt(dx * dx + dy * dy);
+    
+        if (dist < 100) {
+          const scale = 1 + (1 - dist / 100) * 2;
+          bubble.style.transform = `scale(${scale})`;
+        } else {
+          bubble.style.transform = "scale(1)";
+        }
+      });
     });
     
 
